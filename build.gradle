@@ -25,7 +25,7 @@ apply(plugin: "idea");
 apply(plugin: "eclipse");
 
 group = "com.github.java-json-tools";
-version = "2.2.8";
+version = "2.2.8.1-SNAPSHOT";
 sourceCompatibility = "1.6";
 targetCompatibility = "1.6"; // defaults to sourceCompatibility
 
@@ -40,11 +40,13 @@ repositories {
  * List of dependencies
  */
 dependencies {
-    compile(group: "com.github.java-json-tools", name: "json-schema-core", version: "1.2.8");
+    compile(group: "com.github.java-json-tools", name: "json-schema-core", version: "1.2.8") {
+        exclude(group: "com.google.code.findbugs")
+    };
     compile(group: "javax.mail", name: "mailapi", version: "1.4.3");
     compile(group: "joda-time", name: "joda-time", version: "2.9.7");
     compile(group: "com.googlecode.libphonenumber", name: "libphonenumber", version: "8.0.0");
-    compile(group: "com.google.code.findbugs", name: "jsr305", version: "3.0.1");
+    compileOnly(group: "com.google.code.findbugs", name: "jsr305", version: "3.0.1");
     compile(group: "net.sf.jopt-simple", name: "jopt-simple", version: "5.0.3");
     testCompile(group: "org.testng", name: "testng", version: "6.10") {
         exclude(group: "junit", module: "junit");
